@@ -1,163 +1,373 @@
-
 <!DOCTYPE html>
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#0b0b0b">
-  <title>KAZAKH MAFIA | GTA Online</title>
+  <meta name="theme-color" content="#080808">
+  <meta name="description" content="QAZAQ MAFIASY — казахское сообщество GTA Online. Находим напарников, играем вместе и строим настоящее комьюнити.">
+  <title>QAZAQ MAFIASY | GTA Online</title>
+
   <style>
-    * { box-sizing: border-box; }
-    body {
+    :root {
+      --gold: #e6b84b;
+      --gold-light: #ffdf86;
+      --black: #080808;
+      --panel: #121212;
+      --muted: #b6b6b6;
+      --line: rgba(230,184,75,.25);
+    }
+
+    * {
+      box-sizing: border-box;
       margin: 0;
-      background: #0b0b0b;
-      color: #f5f5f5;
-      font-family: Arial, sans-serif;
-      text-align: center;
+      padding: 0;
     }
-    header {
-      padding: 22px 16px;
-      border-bottom: 1px solid #a98228;
-      letter-spacing: 3px;
-      font-size: 13px;
-      color: #d8b45a;
+
+    html {
+      scroll-behavior: smooth;
     }
+
+    body {
+      background: var(--black);
+      color: #fff;
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.65;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
     .hero {
-      min-height: 76vh;
-      padding: 85px 20px 60px;
+      min-height: 92vh;
       display: flex;
-      flex-direction: column;
       align-items: center;
       justify-content: center;
-      background: radial-gradient(ellipse at top, #382a12 0%, #14120d 35%, #0b0b0b 75%);
+      text-align: center;
+      padding: 70px 20px;
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(ellipse at 50% 35%,
+          rgba(130, 91, 22, .24), transparent 62%),
+        linear-gradient(180deg, #111 0%, #080808 100%);
+      border-bottom: 1px solid var(--line);
     }
-    .tag {
-      color: #d8b45a;
-      letter-spacing: 4px;
-      font-size: 12px;
-      margin-bottom: 18px;
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 18px;
+      border: 1px solid rgba(230,184,75,.16);
+      pointer-events: none;
     }
-    h1 {
-      font-size: clamp(38px, 10vw, 76px);
-      line-height: 1;
-      margin: 0;
-      font-weight: 900;
-      letter-spacing: 2px;
-    }
-    h1 span { color: #d8b45a; }
-    .subtitle {
-      color: #bdbdbd;
-      max-width: 480px;
-      line-height: 1.8;
-      margin: 24px auto;
-    }
-    .buttons {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      justify-content: center;
-      margin-top: 18px;
-    }
-    .btn {
-      display: inline-block;
-      padding: 15px 23px;
-      border: 1px solid #d8b45a;
-      color: #d8b45a;
-      text-decoration: none;
-      font-weight: bold;
-      border-radius: 4px;
-      transition: .2s;
-    }
-    .btn.primary {
-      background: #d8b45a;
-      color: #111;
-    }
-    .btn:hover { transform: translateY(-2px); }
-    section { padding: 48px 20px; }
-    h2 { color: #d8b45a; letter-spacing: 2px; }
-    .features {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 16px;
+
+    .hero-content {
       max-width: 850px;
-      margin: 30px auto 0;
+      position: relative;
+      z-index: 1;
     }
-    .feature {
-      border: 1px solid #353027;
-      background: #13120f;
-      padding: 24px 18px;
-      border-radius: 6px;
-      flex: 1 1 200px;
-    }
-    .feature h3 { color: #d8b45a; }
-    .feature p { color: #aaa; line-height: 1.6; font-size: 14px; }
-    footer {
-      border-top: 1px solid #302719;
-      padding: 24px 12px;
-      color: #777;
+
+    .eyebrow {
+      color: var(--gold);
+      letter-spacing: 5px;
+      text-transform: uppercase;
       font-size: 12px;
+      font-weight: bold;
+      margin-bottom: 22px;
+    }
+
+    h1 {
+      font-size: clamp(40px, 10vw, 86px);
+      line-height: 1.04;
+      font-weight: 900;
+      letter-spacing: -2px;
+      color: var(--gold-light);
+      text-shadow: 0 0 32px rgba(230,184,75,.13);
+    }
+
+    .subtitle {
+      font-size: clamp(17px, 3vw, 23px);
+      margin-top: 24px;
+      color: #e7e7e7;
+    }
+
+    .motto {
+      margin-top: 13px;
+      color: var(--gold);
+      letter-spacing: 2px;
+      font-weight: bold;
+    }
+
+    .actions {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 35px;
+    }
+
+    .btn {
+      min-width: 190px;
+      padding: 14px 22px;
+      border-radius: 5px;
+      font-weight: bold;
+      text-align: center;
+      transition: transform .2s, filter .2s;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      filter: brightness(1.1);
+    }
+
+    .btn-gold {
+      background: var(--gold);
+      color: #101010;
+    }
+
+    .btn-whatsapp {
+      background: #25d366;
+      color: #061c0d;
+    }
+
+    .btn-telegram {
+      background: #229ed9;
+      color: white;
+    }
+
+    .btn-outline {
+      border: 1px solid var(--gold);
+      color: var(--gold-light);
+    }
+
+    .section {
+      padding: 76px 20px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-size: clamp(27px, 5vw, 39px);
+      color: var(--gold-light);
+      text-align: center;
+      margin-bottom: 14px;
+    }
+
+    .section-intro {
+      color: var(--muted);
+      text-align: center;
+      max-width: 680px;
+      margin: 0 auto 38px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      background: linear-gradient(145deg, #171717, #0e0e0e);
+      border: 1px solid var(--line);
+      border-radius: 9px;
+      padding: 26px 22px;
+    }
+
+    .card-icon {
+      font-size: 30px;
+      margin-bottom: 12px;
+    }
+
+    .card h3 {
+      color: var(--gold);
+      margin-bottom: 9px;
+      font-size: 19px;
+    }
+
+    .card p {
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .community {
+      background: #101010;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .community-inner {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 72px 20px;
+      text-align: center;
+    }
+
+    .community-inner p {
+      color: var(--muted);
+      margin: 16px auto 0;
+      max-width: 650px;
+    }
+
+    .community .actions {
+      margin-top: 28px;
+    }
+
+    .note {
+      margin-top: 22px;
+      font-size: 13px;
+      color: #929292;
+    }
+
+    footer {
+      padding: 28px 20px;
+      text-align: center;
+      color: #8d8d8d;
+      font-size: 13px;
+    }
+
+    footer strong {
+      color: var(--gold);
+    }
+
+    @media (max-width: 480px) {
+      .hero {
+        min-height: 82vh;
+      }
+
+      .eyebrow {
+        letter-spacing: 3px;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .section {
+        padding: 55px 18px;
+      }
     }
   </style>
 </head>
-<body>
-  <header>KAZAKH MAFIA COMMUNITY</header>
 
-  <main>
-    <div class="hero">
-      <div class="tag">GRAND THEFT AUTO ONLINE</div>
-      <h1>KAZAKH<br><span>MAFIA</span></h1>
+<body>
+  <header class="hero">
+    <div class="hero-content">
+      <div class="eyebrow">GTA Online Community</div>
+
+      <h1>QAZAQ<br>MAFIASY</h1>
+
       <p class="subtitle">
-        Бірлік. Құрмет. Достық.<br>
-        Сообщество игроков GTA Online.
-        Находим своих, играем вместе и создаём историю.
+        Өз адамдарыңды тап. Бірге ойна. Бірге дамы.
       </p>
-      <div class="buttons">
-        <a class="btn primary" href="#community">ВСТУПИТЬ В КОМАНДУ</a>
-        <a class="btn" href="#about">О НАС</a>
+
+      <p class="motto">БІРЛІК. ҚҰРМЕТ. ДОСТЫҚ.</p>
+
+      <div class="actions">
+        <a class="btn btn-telegram"
+           href="https://t.me/qazaqmafiasyGTA5online"
+           target="_blank" rel="noopener noreferrer">
+          ✈ Telegram-ға қосылу
+        </a>
+
+        <a class="btn btn-whatsapp"
+           href="https://chat.whatsapp.com/De27IqjMHU8KG0WPkCIiTgе"
+           target="_blank" rel="noopener noreferrer">
+          WhatsApp-қа қосылу
+        </a>
+
+        <a class="btn btn-outline" href="#about">
+          Біз туралы ↓
+        </a>
       </div>
     </div>
+  </header>
 
-    <section id="about">
-      <h2>НАША КОМАНДА</h2>
-      <p class="subtitle">
-        Мы объединяем игроков, которые ценят дружбу,
-        взаимопомощь и хорошую игру без лишних конфликтов.
-        Новичкам тоже рады!
+  <main>
+    <section class="section" id="about">
+      <h2 class="section-title">Біз туралы</h2>
+
+      <p class="section-intro">
+        QAZAQ MAFIASY — GTA Online ойыншыларына арналған
+        қауымдастық. Біз бірге ойнауға, жаңа достар табуға
+        және өз командамызды құруға көмектесеміз.
       </p>
-      <div class="features">
-        <div class="feature">
-          <h3>🎮 GTA ONLINE</h3>
-          <p>Совместные задания, поездки, автосборы и приключения в Лос-Сантосе.</p>
-        </div>
-        <div class="feature">
-          <h3>🤝 СВОИ ЛЮДИ</h3>
-          <p>Знакомимся, общаемся и находим постоянных напарников.</p>
-        </div>
-        <div class="feature">
-          <h3>🇰🇿 БІРГЕ ОЙНАЙМЫЗ</h3>
-          <p>Казахское сообщество, открытое для всех дружелюбных игроков.</p>
-        </div>
+
+      <div class="cards">
+        <article class="card">
+          <div class="card-icon">🎮</div>
+          <h3>GTA Online</h3>
+          <p>
+            Los Santos әлеміндегі ортақ ойын, тапсырмалар,
+            көліктер және қызықты кездесулер.
+          </p>
+        </article>
+
+        <article class="card">
+          <div class="card-icon">🤝</div>
+          <h3>Нағыз достық</h3>
+          <p>
+            Бірге ойнайтын сенімді напарниктерді тауып,
+            жаңа таныстықтар орнат.
+          </p>
+        </article>
+
+        <article class="card">
+          <div class="card-icon">🇰🇿</div>
+          <h3>Бір қауымдастық</h3>
+          <p>
+            Қазақша сөйлейтін ойыншыларға ашық ортамыз.
+            Орыс тілінде сөйлейтін достарымыз да қош келдіңдер!
+          </p>
+        </article>
+
+        <article class="card">
+          <div class="card-icon">🕹️</div>
+          <h3>PlayStation</h3>
+          <p>
+            PS4 және PS5 ойыншыларын біріктіріп,
+            ортақ ойын кештерін ұйымдастыруға ұмтыламыз.
+          </p>
+        </article>
       </div>
     </section>
 
-    <section id="community">
-      <h2>ПРИСОЕДИНЯЙСЯ</h2>
-      <p class="subtitle">
-        Наше сообщество начинается с каждого из нас.
-        Заходи, знакомься и находи свою команду!
-      </p>
-      <div class="buttons">
-        <!-- Позже вставим настоящую ссылку Telegram -->
-        <a class="btn primary" href="https://t.me/">TELEGRAM</a>
-        <!-- Позже вставим настоящую ссылку WhatsApp -->
-        <a class="btn" href="https://www.whatsapp.com/">WHATSAPP</a>
+    <section class="community" id="join">
+      <div class="community-inner">
+        <h2 class="section-title">Біздің қатарға қосыл!</h2>
+
+        <p>
+          Командамызды бірге дамытайық. Қауымдастыққа қосыл,
+          өзіңе напарник тап және GTA Online әлемінде бірге ойна!
+        </p>
+
+        <div class="actions">
+          <a class="btn btn-telegram"
+             href="https://t.me/qazaqmafiasyGTA5online"
+             target="_blank" rel="noopener noreferrer">
+            Telegram
+          </a>
+
+          <a class="btn btn-whatsapp"
+             href="https://chat.whatsapp.com/De27IqjMHU8KG0WPkCIiTgе"
+             target="_blank" rel="noopener noreferrer">
+            WhatsApp
+          </a>
+        </div>
+
+        <p class="note">
+          Құрмет сақтаймыз. Бір-бірімізге көмектесеміз.
+          Нағыз достарды бірге табамыз.
+        </p>
       </div>
     </section>
   </main>
 
   <footer>
-    KAZAKH MAFIA © 2026 · GTA ONLINE COMMUNITY
+    <p><strong>QAZAQ MAFIASY</strong> · GTA Online Community</p>
+    <p>Бірлік. Құрмет. Достық.</p>
+    <p>Fan community. Not affiliated with Rockstar Games.</p>
   </footer>
 </body>
-</html>
+  </html>
